@@ -987,6 +987,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MyRazorApp.Models;
 
 namespace MyRazorApp.Pages.service
 {
@@ -1011,5 +1012,16 @@ namespace MyRazorApp.Pages.service
     }
 }
 	
+register the ProductService class in middleware means request pipeline which is nothing but Program.cs
+
+
+
+   builder.Services.AddSingleton<MyRazorApp.Pages.service.ProductService>();
+
+
+// means after this line   builder.Services.AddRazorPages();
+
+
+
 
 
