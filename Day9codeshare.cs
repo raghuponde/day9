@@ -1138,4 +1138,12 @@ now in .cshtml of productindex define the code
 
 and url u have to give is 
 	    http://localhost:5028/Products/ProductIndex
+provinding link in layout 
+---------------------------
+   <li class="nav-item">
+      <a class="nav-link text-dark" asp-area="" asp-page="/Purple">Purple</a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link text-dark" asp-area="" asp-page="Products/ProductIndex">Product</a>
+  </li>
 
