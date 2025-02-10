@@ -1148,3 +1148,60 @@ provinding link in layout
       <a class="nav-link text-dark" asp-area="" asp-page="Products/ProductIndex">Product</a>
   </li>
 
+
+
+
+
+secuirty in razor pages of static files 
+--------------------------------------
+suppose i dont want  to give permission to the end user to use .json file or .config files through 
+middle ware means request pipe line i can make 
+the access of that page forbidden
+
+add in the project right click and add one file just file and give name like this sensitive.json and say enter 
+
+and then add this data into this fie 
+
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
+
+and now go to program .cs file and after app.UseStaticFiles();  write this code 
+
+ app.Use(async (context, next) =>
+ {
+     var requestPath = context.Request.Path.Value;
+
+     // Prevent access to sensitive config and json files
+     if (requestPath.EndsWith(".config") || requestPath.EndsWith(".json"))
+     {
+         context.Response.StatusCode = 403; // Forbidden
+         await context.Response.WriteAsync("Access to this file type is restricted.");
+     }
+     // Check for directory traversal
+     else if (requestPath.Contains(".."))
+     {
+         context.Response.StatusCode = 400; // Bad Request
+         await context.Response.WriteAsync("Invalid request path.");
+     }
+     else
+     {
+         await next();
+     }
+ });
+ 
+ now call the project 
+ 
+ https://localhost:7069/sensitive.json
+ 
+ you will get the access restricted ...
+ 
+  
+ 
+
