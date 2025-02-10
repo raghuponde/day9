@@ -1108,6 +1108,7 @@ now in .cshtml of productindex define the code
 @model MyRazorApp.Pages.Products.ProductIndex
 @{
     ViewData["Title"] = "ProductIndex";
+    Layout="_Layout";
 }
 
 <h1>@ViewData["Title"]</h1>
