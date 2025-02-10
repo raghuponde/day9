@@ -1093,8 +1093,6 @@ namespace MyRazorApp.Pages.Products
             this._productService = productservice;
         }
 
-      
-
        
 
         public List<Product> Products { get; set; }
@@ -1104,6 +1102,40 @@ namespace MyRazorApp.Pages.Products
         }
     }
 }
+now in .cshtml of productindex define the code 
+
+@page
+@model MyRazorApp.Pages.Products.ProductIndex
+@{
+    ViewData["Title"] = "ProductIndex";
+}
+
+<h1>@ViewData["Title"]</h1>
+<h2>Product List</h2>
 
 
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+and url u have to give is 
+	    http://localhost:5028/Products/ProductIndex
 
