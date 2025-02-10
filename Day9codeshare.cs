@@ -1022,6 +1022,48 @@ register the ProductService class in middleware means request pipeline which is 
 // means after this line   builder.Services.AddRazorPages();
 
 
+Now add one folder in Pages folder which is Products folder  and in that add one class and there again selct razor and drop down write name 
+	as ProductIndex and say enter 
 
+ 
+.cshtml 
+----------
+@page
+@model MyRazorApp.Pages.Products.ProductIndex
+@{
+    ViewData["Title"] = "ProductIndex";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    
+</div>
+
+and .cs file will look lik this 
+	using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
+
+namespace MyRazorApp.Pages.Products
+{
+    public class ProductIndex : PageModel
+    {
+        private readonly ILogger<ProductIndex> _logger;
+
+        public ProductIndex(ILogger<ProductIndex> logger)
+        {
+            _logger = logger;
+        }
+
+        public void OnGet()
+        {
+        }
+    }
+}
 
 
